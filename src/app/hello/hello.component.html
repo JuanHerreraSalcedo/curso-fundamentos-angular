@@ -1,0 +1,13 @@
+<!-- <div *ngIf="nameList.length < 5">  le coloca limite al formulario-->
+<div [ngSwitch]="nameList.length < 5">
+    <div *ngSwitchCase="true">
+        <input type="text" [(ngModel)]="inputName">
+        <!-- <input type="text" [value]="inputName" (keyup)="updateInputName($event)"> -->
+        <button (click)="addName()"> add name</button>
+    </div>
+    <div *ngSwitchCase="false">
+        <p>You can't add more names</p>
+    </div>
+</div>
+<!-- <p *ngFor="let item of nameList; index as i" (click)="onNameClick()">{{i}} - Hello {{item | slice:0:1 | uppercase}}{{item | slice:1 | lowercase}}!</p> -->
+<p *ngFor="let item of nameList; index as i" (click)="onNameClick()">{{i}} - Hello {{item | upperCapital}}!</p>
